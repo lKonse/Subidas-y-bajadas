@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Practica1DificultadJuego {
     
     static String $Dificultad;
-    
+    //La variable que definira que dificultad llevara el juego
     
 
     public void MenuDificultad(){
@@ -15,6 +15,7 @@ public class Practica1DificultadJuego {
         int OpMenuDificultad;
         
         do{
+        //Menu de la dificultad de juego
         System.out.println("DIFICULTAD DEL JUEGO:");
         System.out.println("1. Facil");
         System.out.println("2. Dificil");
@@ -28,6 +29,7 @@ public class Practica1DificultadJuego {
             
             case 1:
                 $Dificultad = "Facil";
+                //Se le asigna a la variable la dificultad, con esto el juego sabra que se debe desarrolar en "Facil"
                 
                 System.out.println("Dificultad facil seleccionada");
                 System.out.println("Jugadores de 2 a 3");
@@ -38,6 +40,7 @@ public class Practica1DificultadJuego {
                 
             case 2:
                 $Dificultad = "Dificil";
+                //Se le asigna a la variable la dificultad, con esto el juego sabra que se debe desarrolar en "Dificil"
                 
                 System.out.println("Dificultad facil seleccionada");
                 System.out.println("Jugadores de 2 a 3");
@@ -59,6 +62,7 @@ public class Practica1DificultadJuego {
     }
     
     public void Enter(){
+        //Metodo para que el programa continue si el usuario pulsa enter
         Scanner Enter = new Scanner(System.in);
         System.out.println();
         System.out.println("Presione enter para continuar");

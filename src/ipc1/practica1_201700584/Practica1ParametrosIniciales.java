@@ -6,17 +6,21 @@ public class Practica1ParametrosIniciales {
     
     Scanner entrada = new Scanner(System.in);
     Practica1DificultadJuego llamar = new Practica1DificultadJuego();
+    //Se llama la clase de para poder consultar la variable $Dificultad y saber que juego se llevara acabo
     
-    static int $NumJugadores;
+    static int $NumJugadores, $Subidas, $Bajadas;
     static String P1, P2, P3;
+    //Variables que el juego consultara para el desarrollo del juego
     
     
     public void MenuParametros(){
         
         int OpMenuParametros;
         
+        String evaluar = llamar.$Dificultad;
         
         do{
+         //Menu de Parametros del juego
         System.out.println("PARAMETROS DEL JUEGO:");
         System.out.println("1. Jugadores");
         System.out.println("2. Subidas y bajadas");
@@ -29,19 +33,33 @@ public class Practica1ParametrosIniciales {
         switch(OpMenuParametros){
             
             case 1:
-                String evaluar = llamar.$Dificultad;
-                
+
                 if(evaluar.equals("Facil")){
-                Easy();
+                    //Llamamos al metodo que contiene los parametros para jugadores en modo Facil
+                    EasyJugadores();
                 }
                 
                 else if(evaluar.equals("Dificil")){
-                Hard();    
+                    //Llamamos al metodo que contiene los parametros para jugadores en modo Dificil
+                    HardJugadores();    
                 }
+                
+                Enter();
                 break;
                 
             case 2:
-                Hard();
+                
+                if(evaluar.equals("Facil")){
+                    //Llamamos al metodo que contiene los parametros para Subidas y bajadas en modo Facil
+                    EasySubBaj();
+                }
+                
+                else if(evaluar.equals("Dificil")){
+                    //Llamamos al metodo que contiene los parametros para Subidas y bajadas en modo Dificil
+                    HardSubBaj();
+                }
+                
+                Enter();
                 break;
                 
             case 3:
@@ -55,28 +73,24 @@ public class Practica1ParametrosIniciales {
         }while(OpMenuParametros != 3);
         
     }
-    public void Easy(){
+    public void EasyJugadores(){
 
         System.out.print("Numero de jugadores: ");
         $NumJugadores = entrada.nextInt();
+        //Pedimos el numero de jugadores
                     
-        while($NumJugadores == 0){
-            System.out.println("Deben jugar como minimo 2 jugadores");
-            System.out.print("Numero de jugadores: ");
-            $NumJugadores = entrada.nextInt();
-        }
-        while($NumJugadores <= 1){
-            System.out.println("Deben jugar como minimo 2 jugadores");
-            System.out.print("Numero de jugadores: ");
-            $NumJugadores = entrada.nextInt();
-        }
-        while($NumJugadores >= 4){
-            System.out.println("EL maximo de jugadores debe ser de 3");
+        while($NumJugadores < 2 || $NumJugadores > 3){
+        //Evaluamos que se ingresen entre 2 o 3 jugadores, de lo contrario se pedira ingresar de nuevo el numero de jugadores
+        
+            System.out.println();
+            System.out.println("Deben jugar entre 2 o 3 jugadores");
             System.out.print("Numero de jugadores: ");
             $NumJugadores = entrada.nextInt();
         }
                     
         if($NumJugadores == 2){
+        //Evaluamos que si fueron 2 jugadores pedira que ingrese los simbolos de cada jugador    
+            System.out.println();
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
             P1 = entrada.next();
@@ -89,6 +103,9 @@ public class Practica1ParametrosIniciales {
         }
                     
         if($NumJugadores == 3){
+         //Evaluamos que si fueron 3 jugadores pedira que ingrese los simbolos de cada jugador 
+         
+            System.out.println();
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
             P1 = entrada.next();
@@ -101,10 +118,43 @@ public class Practica1ParametrosIniciales {
                         
             System.out.println("Usuarios ingresados con exito");
         }
-        Enter();
     }
     
-    public void Hard(){
+    public void HardJugadores(){
+        
+    }
+    
+    public void EasySubBaj(){
+        System.out.print("Numero de subidas: ");
+        $Subidas = entrada.nextInt();
+        //Pedimos que se ingrese el nuemro se subidas que tendra el juego
+        
+        while($Subidas < 5 || $Subidas > 10){
+        //Evaluamos que las subidas sean entre 5 y 10, de lo contrario se pedira que se ingrese de nuevo el numero de subidas
+            
+            System.out.println();
+            System.out.println("El numero se subidas debe ser entre 5 y 10");
+            System.out.print("Numero de subidas: ");
+            $Subidas = entrada.nextInt();
+        }
+        
+        System.out.print("Numero de bajadas: ");
+        $Bajadas = entrada.nextInt();
+        
+        while($Bajadas < 5 || $Bajadas > 10){
+        //Evaluamos que las bajadas sean entre 5 y 10, de lo contrario se pedira que se ingrese de nuevo el numero de bajadas
+            
+            System.out.println();
+            System.out.println("El numero se bajadas debe ser entre 5 y 10");
+            System.out.print("Numero de bajadas: ");
+            $Bajadas = entrada.nextInt();
+        }
+ 
+        
+        System.out.println("Subidas y bajadas ingresadas correctamente");
+    }
+    
+    public void HardSubBaj(){
         
     }
     
