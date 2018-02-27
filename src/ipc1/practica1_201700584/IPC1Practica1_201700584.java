@@ -24,6 +24,8 @@ public class IPC1Practica1_201700584 {
            switch(OpMenuPrincipal){
                
                case 1:
+                   Practica1DificultadJuego b = new Practica1DificultadJuego();
+                   b.MenuDificultad();
                    break;
                 
                case 2:
