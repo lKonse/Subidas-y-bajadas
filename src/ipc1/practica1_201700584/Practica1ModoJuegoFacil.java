@@ -19,7 +19,7 @@ public class Practica1ModoJuegoFacil {
     
     int ContP1 = 0, ContP2 = 0, ContP3 = 0, Dado;
     int CasillaP1 = 0, CasillaP2 = 0, CasillaP3 = 0;
-    int fil, col;
+    int fil, col, GameOver=0;
     
     public void ModoJuegoFacil(){
         
@@ -52,7 +52,7 @@ public class Practica1ModoJuegoFacil {
                     JugadorDos();
                 }
 
-            }while(CasillaP1 < 40 || CasillaP2 < 40);
+            }while(GameOver != 1);
             //Repetira los turnos hasta que alguno de los jugadores llegue a la casilla 40 o mas
         }
         
@@ -60,8 +60,16 @@ public class Practica1ModoJuegoFacil {
      
     public void JugadorUno(){
         
-        
-        
+        //Aqui evaluara en donde se encuentra el jugador y dejara en blanco la casilla para luego moverlo
+        for(fil = 0; fil < 8; fil++){
+            for(col = 0; col < 5; col++){
+                if(CasillaP1 != CasillaP2){
+                    if(CasillaP1 == Casilla[col][fil]){
+                        Jugadores[col][fil] = "|_|";
+                    }    
+                }
+            } 
+        }
         System.out.println("");
         System.out.println("Turno del jugador 1");
         System.out.println("Presione enter para tirar dado");
@@ -91,11 +99,29 @@ public class Practica1ModoJuegoFacil {
                 System.out.print(Jugadores[col][fil] + " ");
             }
         }ContP1++;
+        
+        if(CasillaP1 >= 40){
+            System.out.println("");
+            System.out.println("El jugador 1 es el ganador!!");
+            System.out.println("Presione enter para salir de la partida");
+            entrada.nextLine();
+            GameOver = 1;
+        } else {
+        }
     }
     
     public void JugadorDos(){
         
-        
+        //Aqui evaluara en donde se encuentra el jugador y dejara en blanco la casilla para luego moverlo
+        for(fil = 0; fil < 8; fil++){
+            for(col = 0; col < 5; col++){
+                if(CasillaP2 != CasillaP1){
+                    if(CasillaP2 == Casilla[col][fil]){
+                        Jugadores[col][fil] = "|_|";
+                    }    
+                }
+            } 
+        }
         
         System.out.println("");
         System.out.println("Turno del jugador 2");
@@ -124,7 +150,15 @@ public class Practica1ModoJuegoFacil {
                 }
                 System.out.print(Jugadores[col][fil] + " ");
             }
-        }ContP2++;        
+        }ContP2++;    
+        
+        if(CasillaP2 >= 40){
+            System.out.println("");
+            System.out.println("El jugador 2 es el ganador!!");
+            System.out.println("Presione enter para salir de la partida");
+            entrada.nextLine();
+            GameOver = 1;
+        }
     }
     
     public void NumeraciónCasillas(){
@@ -175,10 +209,10 @@ public class Practica1ModoJuegoFacil {
 //        for(int aj = 0; aj < 8; aj++){
 //            System.out.println("");
 //            for(int y = 0; y < 5; y++){
-//                System.out.print(Casillas[y][aj] + "  ");
+//                System.out.print(Casilla[y][aj] + "  ");
 //            }
 //        }
-        
+//        entrada.nextLine();
     }
     
 }

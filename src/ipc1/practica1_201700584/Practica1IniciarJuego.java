@@ -24,7 +24,6 @@ public class Practica1IniciarJuego {
             
         }
         
-        Enter();
     }
     
     public void Enter(){
