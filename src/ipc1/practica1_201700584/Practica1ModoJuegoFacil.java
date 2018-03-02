@@ -13,6 +13,12 @@ public class Practica1ModoJuegoFacil {
     Scanner entrada = new Scanner(System.in);
     Random aleatorio = new Random();
     
+    int NumeroSubidas = par.$Subidas;
+    int NumeroBajadas = par.$Bajadas;
+    
+    int[] subida = new int[NumeroSubidas];
+    int[] bajada = new int[NumeroBajadas];
+    
     int[][] Casilla = new int[5][8];
     String[][] SubyBaj = new String[5][8];
     String[][] Jugadores = new String[5][8];
@@ -29,14 +35,18 @@ public class Practica1ModoJuegoFacil {
         System.out.println("Tablero actual: ");
         //Mostramos el tablero vacio, solo con subidas y bajadas y la casilla final
         for(fil = 0; fil < 8; fil++){
-            System.out.println("");
-            
             for(col = 0; col < 5; col++){
-                
                 Jugadores[col][fil] = "|_|";
-                Jugadores[0][0] = "|$|";
-                System.out.print(Jugadores[col][fil] + " ");
             } 
+        }
+        Jugadores[0][0] = "|$|";
+        SubidasyBajadas();
+        
+        for(fil = 0; fil < 8; fil++){
+            System.out.println("");
+            for(col = 0; col < 5; col++){
+                System.out.print(Jugadores[col][fil] + " ");
+            }
         }
 
         if(par.$NumJugadores == 2){
@@ -159,6 +169,52 @@ public class Practica1ModoJuegoFacil {
             entrada.nextLine();
             GameOver = 1;
         }
+    }
+    
+    public void SubidasyBajadas(){
+        
+        for(col = 0; col < NumeroSubidas; col++){
+            subida[col] = aleatorio.nextInt(40);
+            
+            while(subida[col] == 0){
+                subida[col] = aleatorio.nextInt(40);
+            }
+            
+            
+        }
+        
+        for(int u = 0; u < NumeroSubidas; u++){
+            for(fil=0; fil < 8; fil++){
+                for(col=0; col < 5; col++){
+                
+                    if(subida[u] == Casilla[col][fil]){
+                        Jugadores[col][fil] = "|+|";
+                        
+                    }
+                }  
+            }
+        }
+        
+        for(col = 0; col < NumeroBajadas; col++){
+            bajada[col] = aleatorio.nextInt(40);
+            
+            if(bajada[col] == 0){
+                bajada[col] = aleatorio.nextInt(40);
+            }
+        }
+        
+        for(int u = 0; u < NumeroBajadas; u++){
+            for(fil=0; fil < 8; fil++){
+                for(col=0; col < 5; col++){
+                
+                    if(bajada[u] == Casilla[col][fil]){
+                        Jugadores[col][fil] = "|-|";
+                        
+                    }
+                }  
+            }
+        }
+        
     }
     
     public void NumeraciónCasillas(){
