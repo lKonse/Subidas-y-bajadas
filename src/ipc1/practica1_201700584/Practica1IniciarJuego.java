@@ -16,11 +16,18 @@ public class Practica1IniciarJuego {
         Practica1ModoJuegoFacil modo1 = new Practica1ModoJuegoFacil();
         //Llamamos a la clase que contiene el modo de juego facil
         
+        Practica1ModoJuegoDificil modo2 = new Practica1ModoJuegoDificil();
+        //Llamamos a la clase que contiene el modo de juego Dificil
+        
         String evaluar = dif.$Dificultad;
         
         if(evaluar.contains("Facil")){
             
             modo1.ModoJuegoFacil();
+            
+        }else if(evaluar.contains("Dificil")){
+            
+            modo2.ModoJuegoDificil();
             
         }
         

@@ -43,7 +43,7 @@ public class Practica1DificultadJuego {
                 //Se le asigna a la variable la dificultad, con esto el juego sabra que se debe desarrolar en "Dificil"
                 
                 System.out.println("Dificultad facil seleccionada");
-                System.out.println("Jugadores de 2 a 3");
+                System.out.println("Jugadores de 2 a 4");
                 System.out.println("Subidas de 20 a 40");
                 System.out.println("Bajadas de 20 a 40");
                 Enter();
