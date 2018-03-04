@@ -28,7 +28,7 @@ public class Practica1ModoJuegoFacil {
     
     int ContP1 = 0, ContP2 = 0, ContP3 = 0, Dado;
     int CasillaP1 = 0, CasillaP2 = 0, CasillaP3 = 0;
-    int fil, col, GameOver=0;
+    int fil, col, f, GameOver=0;
     
     public void ModoJuegoFacil(){
         
@@ -47,6 +47,7 @@ public class Practica1ModoJuegoFacil {
             } 
         }
         Jugadores[0][0] = "|$|";
+        
         SubidasyBajadas();
         
         for(fil = 0; fil < 8; fil++){
@@ -71,6 +72,7 @@ public class Practica1ModoJuegoFacil {
 
             }while(GameOver != 1);
             //Repetira los turnos hasta que alguno de los jugadores llegue a la casilla 40 o mas
+            
         }else if(par.$NumJugadores == 3){
             do{
                 //Llevamos un contador por jugador para saber a de quien es el turno de jugar
@@ -247,16 +249,17 @@ public class Practica1ModoJuegoFacil {
     
     public void SubidasyBajadas(){
         
-        for(col = 0; col < NumeroSubidas; col++){
-            subida[col] = aleatorio.nextInt(40);
+        for(col = 1; col < NumeroSubidas; col++){
             
-//            for(int b = 0; b < NumeroSubidas; b++){
-//                while(subida[col] == 0 || subida[col] == (subida[b]-1) 
-//                        || subida[col] == (subida[b]+1)){
-//
-//                    subida[col] = aleatorio.nextInt(40);
-//                }  
-//            }
+            for(int b = 0; b < NumeroSubidas; b++){
+                subida[col] = aleatorio.nextInt(40);
+                            
+                while(subida[col] == 0 || subida[col] == (subida[b]-1) 
+                        || subida[col] == (subida[b]+1)){
+
+                    subida[col] = aleatorio.nextInt(40);
+                }  
+            }
         }
         
         for(int u = 0; u < NumeroSubidas; u++){
@@ -271,19 +274,19 @@ public class Practica1ModoJuegoFacil {
             }
         }
         
-        for(col = 0; col < NumeroBajadas; col++){
-            bajada[col] = aleatorio.nextInt(40);
-            
-//            for(int b = 0; b < NumeroBajadas; b++){
-//                while(bajada[col] == 0 || bajada[col] == subida[b] || bajada[col] == (subida[b]-1) 
-//                        || bajada[col] == (subida[b]+1) || bajada[col] == (bajada[b]-1)
-//                        || bajada[col] == (bajada[b]+1)){
-//                    
-//                    subida[col] = aleatorio.nextInt(40);
-//                }  
-//            }
-        }
-        
+            for(col = 1; col < NumeroBajadas; col++){
+                for(int b = 0; b < NumeroBajadas; b++){
+                    
+                    bajada[col] = aleatorio.nextInt(40);
+                    
+                    while(bajada[col] == 0 || bajada[col] == (bajada[b]-1)
+                            || bajada[col] == (bajada[b]+1)){
+
+                        subida[col] = aleatorio.nextInt(40);
+                    }  
+                }
+            }
+
         for(int u = 0; u < NumeroBajadas; u++){
             for(fil=0; fil < 8; fil++){
                 for(col=0; col < 5; col++){
@@ -352,7 +355,8 @@ public class Practica1ModoJuegoFacil {
 //        entrada.nextLine();
 
 
-
+//|| bajada[col] == subida[b] || bajada[col] == (subida[b]-1) 
+//                        || bajada[col] == (subida[b]+1) 
 
 
 //    posicion = 0;

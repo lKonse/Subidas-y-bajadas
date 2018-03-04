@@ -82,7 +82,7 @@ public class Practica1ParametrosIniciales {
         $NumJugadores = entrada.nextInt();
         //Pedimos el numero de jugadores
                     
-        while($NumJugadores < 2 || $NumJugadores > 3){
+        while($NumJugadores < 2 && $NumJugadores > 3){
         //Evaluamos que se ingresen entre 2 o 3 jugadores, de lo contrario se pedira ingresar de nuevo el numero de jugadores
         
             System.out.println();
@@ -103,6 +103,7 @@ public class Practica1ParametrosIniciales {
                         
             System.out.println("Usuarios ingresados con exito");
             
+            //Ingresa un numero aleatorio de 0 a 1 en la posicion matriz para definir los turnos
             turno = aleat.nextInt(2);
             
             P1 = jugador[turno];
@@ -128,11 +129,12 @@ public class Practica1ParametrosIniciales {
             System.out.print("Ingrese el simbolo del jugador 2: ");
             jugador[1] = entrada.next();
             
-            System.out.print("Ingrese el simbolo del jugador 2: ");
+            System.out.print("Ingrese el simbolo del jugador 3: ");
             jugador[2] = entrada.next();
                         
             System.out.println("Usuarios ingresados con exito");
             
+            //Ingresa un numero aleatorio de 0 a 2 en la posicion matriz para definir los turnos
             turno = aleat.nextInt(3);
             
             P1 = jugador[turno];
