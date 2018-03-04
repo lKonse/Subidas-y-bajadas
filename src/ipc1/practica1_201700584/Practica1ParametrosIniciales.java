@@ -1,15 +1,18 @@
 
 package ipc1.practica1_201700584;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Practica1ParametrosIniciales {
     
     Scanner entrada = new Scanner(System.in);
+    Random aleat = new Random();
     Practica1DificultadJuego llamar = new Practica1DificultadJuego();
     //Se llama la clase de para poder consultar la variable $Dificultad y saber que juego se llevara acabo
     
-    static int $NumJugadores, $Subidas, $Bajadas;
+    static int $NumJugadores, $Subidas, $Bajadas, turno;
     static String P1, P2, P3;
+    String[] jugador = new String[3];
     //Variables que el juego consultara para el desarrollo del juego
     
     
@@ -93,30 +96,62 @@ public class Practica1ParametrosIniciales {
             System.out.println();
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
-            P1 = entrada.next();
+            jugador[0] = entrada.next();
                         
             System.out.print("Ingrese el simbolo del jugador 2: ");
-            P2 = entrada.next();
+            jugador[1] = entrada.next();
                         
             System.out.println("Usuarios ingresados con exito");
+            
+            turno = aleat.nextInt(2);
+            
+            P1 = jugador[turno];
+            
+            turno = aleat.nextInt(2);
+            P2 = jugador[turno];
+            
+            while(P2.equals(P1)){
+                turno = aleat.nextInt(2);
+                P2 = jugador[turno];
+            }
                         
         }
                     
         if($NumJugadores == 3){
          //Evaluamos que si fueron 3 jugadores pedira que ingrese los simbolos de cada jugador 
          
-            System.out.println();
+             System.out.println();
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
-            P1 = entrada.next();
+            jugador[0] = entrada.next();
                         
             System.out.print("Ingrese el simbolo del jugador 2: ");
-            P2 = entrada.next();
-                        
-            System.out.print("Ingrese el simbolo del jugador 3: ");
-            P3 = entrada.next();
+            jugador[1] = entrada.next();
+            
+            System.out.print("Ingrese el simbolo del jugador 2: ");
+            jugador[2] = entrada.next();
                         
             System.out.println("Usuarios ingresados con exito");
+            
+            turno = aleat.nextInt(3);
+            
+            P1 = jugador[turno];
+            
+            turno = aleat.nextInt(3);
+            P2 = jugador[turno];
+            
+            while(P2.equals(P1)){
+                turno = aleat.nextInt(3);
+                P2 = jugador[turno];
+            }
+            
+            turno = aleat.nextInt(3);
+            P3 = jugador[turno];
+            
+            while(P3.equals(P1) || P3.equals(P2)){
+                turno = aleat.nextInt(3);
+                P3 = jugador[turno];
+            }
         }
     }
     
