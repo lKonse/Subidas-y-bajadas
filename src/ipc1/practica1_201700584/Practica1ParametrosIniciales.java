@@ -82,7 +82,7 @@ public class Practica1ParametrosIniciales {
         $NumJugadores = entrada.nextInt();
         //Pedimos el numero de jugadores
                     
-        while($NumJugadores < 2 && $NumJugadores > 3){
+        while($NumJugadores < 2 || $NumJugadores > 3){
         //Evaluamos que se ingresen entre 2 o 3 jugadores, de lo contrario se pedira ingresar de nuevo el numero de jugadores
         
             System.out.println();

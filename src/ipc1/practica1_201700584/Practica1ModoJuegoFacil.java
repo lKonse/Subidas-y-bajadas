@@ -36,9 +36,15 @@ public class Practica1ModoJuegoFacil {
         NumeraciónCasillas();
         
         System.out.println("Orden de turnos: ");
-        System.out.println("1. " + par.P1);
-        System.out.println("2. " + par.P2);
-
+        if(par.$NumJugadores == 2){
+            System.out.println("1. " + par.P1);
+            System.out.println("2. " + par.P2);
+        
+        }else if(par.$NumJugadores == 3){
+            System.out.println("1. " + par.P1);
+            System.out.println("2. " + par.P2);
+            System.out.println("2. " + par.P3);
+        }
         System.out.println("Tablero actual: ");
         //Mostramos el tablero vacio, solo con subidas y bajadas y la casilla final
         for(fil = 0; fil < 8; fil++){
@@ -67,7 +73,7 @@ public class Practica1ModoJuegoFacil {
                 }
                 else if(ContP1 > ContP2){
                 //Llamamos al metodo que contiene la jugabilidad del jugador 2
-                    JugadorDos();
+                   JugadorDos();
                 }
 
             }while(GameOver != 1);
@@ -108,7 +114,7 @@ public class Practica1ModoJuegoFacil {
             } 
         }
         System.out.println("");
-        System.out.println("Turno del jugador 1");
+        System.out.println("Turno del jugador: " + par.P1);
         System.out.println("Presione enter para tirar dado");
         entrada.nextLine();
         Dado = aleatorio.nextInt(7);
@@ -134,16 +140,116 @@ public class Practica1ModoJuegoFacil {
                 }
                 
                 System.out.print(Jugadores[col][fil] + " ");
+                
             }
-        }ContP1++;
+        }
+        
+            //Moverse al caer en una casilla de subida
+            for(int b = 0; b < NumeroSubidas; b++){
+                while(CasillaP1 == subida[b]){
+                    System.out.println("");
+                    System.out.println(par.P1 + " cayo en una casilla de subida");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia adelante");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " casillas hacia adelante");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroSubidas; u++){
+                                if(CasillaP1 == subida[u]){
+                                    if(CasillaP1 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|+|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP1 = CasillaP1 + Dado;
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP1 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P1 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+            //Moverse al caer en una casilla de bajada
+            for(int b = 0; b < NumeroBajadas; b++){
+                while(CasillaP1 == bajada[b]){
+                    System.out.println("");
+                    System.out.println(par.P1 + " cayo en una casilla de bajada");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia atras");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " Casillas hacia atras");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroBajadas; u++){
+                                if(CasillaP1 == bajada[u]){
+                                    if(CasillaP1 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|-|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP1 = CasillaP1 - Dado;
+                    if(CasillaP1 < 1){
+                        CasillaP1 = 1;
+                    }
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP1 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P1 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+
+        ContP1++;
         
         if(CasillaP1 >= 40){
             System.out.println("");
-            System.out.println("El jugador 1 es el ganador!!");
+            System.out.println("El jugador " + par.P1 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
             entrada.nextLine();
             GameOver = 1;
         }
+        
     }
     
     public void JugadorDos(){
@@ -160,7 +266,7 @@ public class Practica1ModoJuegoFacil {
         }
         
         System.out.println("");
-        System.out.println("Turno del jugador 2");
+        System.out.println("Turno del jugador "+par.P2);
         System.out.println("Presione enter para tirar dado");
         entrada.nextLine();
         Dado = aleatorio.nextInt(7);
@@ -186,11 +292,109 @@ public class Practica1ModoJuegoFacil {
                 }
                 System.out.print(Jugadores[col][fil] + " ");
             }
-        }ContP2++;    
+        }
+        
+        //Moverse al caer en una casilla de subida
+            for(int b = 0; b < NumeroSubidas; b++){
+                while(CasillaP2 == subida[b]){
+                    System.out.println("");
+                    System.out.println(par.P2 + " cayo en una casilla de subida");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia adelante");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " Casillas hacia adelante");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroSubidas; u++){
+                                if(CasillaP2 == subida[u]){
+                                    if(CasillaP2 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|+|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP2 = CasillaP2 + Dado;
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP2 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P2 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+            //Moverse al caer en una casilla de bajada
+            for(int b = 0; b < NumeroBajadas; b++){
+                while(CasillaP2 == bajada[b]){
+                    System.out.println("");
+                    System.out.println(par.P2 + " cayo en una casilla de bajada");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia atras");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " Casillas hacia atras");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroBajadas; u++){
+                                if(CasillaP2 == bajada[u]){
+                                    if(CasillaP2 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|-|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP2 = CasillaP2 - Dado;
+                    if(CasillaP2 < 1){
+                        CasillaP2 = 1;
+                    }
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP2 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P2 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+        
+        ContP2++;    
         
         if(CasillaP2 >= 40){
             System.out.println("");
-            System.out.println("El jugador 2 es el ganador!!");
+            System.out.println("El jugador " +par.P2+ " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
             entrada.nextLine();
             GameOver = 1;
@@ -209,7 +413,7 @@ public class Practica1ModoJuegoFacil {
             } 
         }
         System.out.println("");
-        System.out.println("Turno del jugador 3");
+        System.out.println("Turno del jugador "+par.P3);
         System.out.println("Presione enter para tirar dado");
         entrada.nextLine();
         Dado = aleatorio.nextInt(7);
@@ -236,11 +440,109 @@ public class Practica1ModoJuegoFacil {
                 
                 System.out.print(Jugadores[col][fil] + " ");
             }
-        }ContP3++;
+        }
+        
+        //Moverse al caer en una casilla de subida
+            for(int b = 0; b < NumeroSubidas; b++){
+                while(CasillaP3 == subida[b]){
+                    System.out.println("");
+                    System.out.println(par.P3 + " cayo en una casilla de subida");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia adelante");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " Casillas hacia adelante");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroSubidas; u++){
+                                if(CasillaP3 == subida[u]){
+                                    if(CasillaP3 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|+|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP3 = CasillaP3 + Dado;
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP3 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P3 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+            //Moverse al caer en una casilla de bajada
+            for(int b = 0; b < NumeroBajadas; b++){
+                while(CasillaP3 == bajada[b]){
+                    System.out.println("");
+                    System.out.println(par.P3 + " cayo en una casilla de bajada");
+                    System.out.println("Presione enter para ver cuantas casillas se movera hacia atras");
+                    entrada.nextLine();
+                    Dado = aleatorio.nextInt(13);
+                    while(Dado == 0){
+                        Dado = aleatorio.nextInt(13);
+                    }
+                    System.out.println("Se movera " + Dado + " Casillas hacia atras");
+                    System.out.println("Presione enter para moverse en el tablero");
+                    entrada.nextLine();
+                    
+                    for(fil = 0; fil < 8; fil++){
+                        for(col = 0; col < 5; col++){
+                            for(int u = 0; u < NumeroBajadas; u++){
+                                if(CasillaP3 == bajada[u]){
+                                    if(CasillaP3 == Casilla[col][fil]){
+                                        Jugadores[col][fil] = "|-|";
+                                    } 
+                                }
+                            }   
+                        }
+                    }
+                      
+                    CasillaP3 = CasillaP3 - Dado;
+                    if(CasillaP3 < 1){
+                        CasillaP3 = 1;
+                    }
+                    
+                    System.out.println("Tablero Actual:");
+
+                    for(fil = 0; fil < 8; fil++){
+                        System.out.println("");
+
+                        for(col = 0; col < 5; col++){
+
+                            if(CasillaP3 == Casilla[col][fil]){
+                                Jugadores[col][fil] = "|" + par.P3 + "|";
+                            }
+
+                            System.out.print(Jugadores[col][fil] + " ");
+
+                        }
+                    }
+                }
+            }
+        
+        ContP3++;
         
         if(CasillaP3 >= 40){
             System.out.println("");
-            System.out.println("El jugador 3 es el ganador!!");
+            System.out.println("El jugador " + par.P3 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
             entrada.nextLine();
             GameOver = 1;
@@ -249,12 +551,12 @@ public class Practica1ModoJuegoFacil {
     
     public void SubidasyBajadas(){
         
-        for(col = 1; col < NumeroSubidas; col++){
+        for(col = 0; col < NumeroSubidas; col++){
             
-            for(int b = 0; b < NumeroSubidas; b++){
+            for(int b = 0; b < col; b++){
                 subida[col] = aleatorio.nextInt(40);
                             
-                while(subida[col] == 0 || subida[col] == (subida[b]-1) 
+                while(subida[col] == 0 || subida[col] == subida[b] || subida[col] == (subida[b]-1) 
                         || subida[col] == (subida[b]+1)){
 
                     subida[col] = aleatorio.nextInt(40);
@@ -274,15 +576,17 @@ public class Practica1ModoJuegoFacil {
             }
         }
         
-            for(col = 1; col < NumeroBajadas; col++){
-                for(int b = 0; b < NumeroBajadas; b++){
-                    
-                    bajada[col] = aleatorio.nextInt(40);
-                    
-                    while(bajada[col] == 0 || bajada[col] == (bajada[b]-1)
-                            || bajada[col] == (bajada[b]+1)){
+            for(fil = 0; fil < NumeroBajadas; fil++){
+                for(col = 0; col < NumeroBajadas; col++){
+                    for(int b = 0; b < NumeroSubidas; b++ ){
+                        bajada[col] = aleatorio.nextInt(40);
 
-                        subida[col] = aleatorio.nextInt(40);
+                        while(bajada[fil] == 0 || bajada[fil] == (bajada[col]-1)
+                                || bajada[fil] == (bajada[fil]+1) || bajada[col] == subida[b] || bajada[col] == (subida[b]-1)
+                                || bajada[col] == (subida[b]+1)){
+
+                            bajada[col] = aleatorio.nextInt(40);
+                        }   
                     }  
                 }
             }
