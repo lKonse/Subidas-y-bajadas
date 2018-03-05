@@ -203,11 +203,19 @@ public class Practica1ParametrosIniciales {
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
             jugador[0] = entrada.next();
+            while(jugador[0].contains("$")){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 1: ");
+                jugador[0] = entrada.next();
+            }
                         
             System.out.print("Ingrese el simbolo del jugador 2: ");
             jugador[1] = entrada.next();
-                        
-            System.out.println("Usuarios ingresados con exito");
+            while(jugador[1].contains("$") || jugador[1].contains(jugador[0])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 2: ");
+                jugador[1] = entrada.next();
+            }
             
             //Ingresa un numero aleatorio de 0 a 1 en la posicion matriz para definir los turnos
             turno = aleat.nextInt(2);
@@ -231,14 +239,27 @@ public class Practica1ParametrosIniciales {
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
             jugador[0] = entrada.next();
+            while(jugador[0].contains("$")){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 1: ");
+                jugador[0] = entrada.next();
+            }
                         
             System.out.print("Ingrese el simbolo del jugador 2: ");
             jugador[1] = entrada.next();
+            while(jugador[1].contains("$") || jugador[1].contains(jugador[0])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 2: ");
+                jugador[1] = entrada.next();
+            }
             
             System.out.print("Ingrese el simbolo del jugador 3: ");
             jugador[2] = entrada.next();
-                        
-            System.out.println("Usuarios ingresados con exito");
+            while(jugador[2].contains("$") || jugador[2].contains(jugador[0]) || jugador[2].contains(jugador[1])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 3: ");
+                jugador[2] = entrada.next();
+            }
             
             //Ingresa un numero aleatorio de 0 a 2 en la posicion matriz para definir los turnos
             turno = aleat.nextInt(3);
@@ -268,15 +289,36 @@ public class Practica1ParametrosIniciales {
                         
             System.out.print("Ingrese el simbolo del jugador 1: ");
             jugador[0] = entrada.next();
+            while(jugador[0].contains("$")){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 1: ");
+                jugador[0] = entrada.next();
+            }
                         
             System.out.print("Ingrese el simbolo del jugador 2: ");
             jugador[1] = entrada.next();
+            while(jugador[1].contains("$") || jugador[1].contains(jugador[0])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 2: ");
+                jugador[1] = entrada.next();
+            }
             
             System.out.print("Ingrese el simbolo del jugador 3: ");
             jugador[2] = entrada.next();
+            while(jugador[2].contains("$") || jugador[2].contains(jugador[0]) || jugador[2].contains(jugador[1])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 3: ");
+                jugador[2] = entrada.next();
+            }
             
             System.out.print("Ingrese el simbolo del jugador 4: ");
             jugador[3] = entrada.next();
+            while(jugador[3].contains("$") || jugador[3].contains(jugador[0]) || jugador[3].contains(jugador[1])
+                    || jugador[3].contains(jugador[2])){
+                System.out.println("No es permitido el simbolo");
+                System.out.print("Ingrese otro simbolo para el jugador 4: ");
+                jugador[3] = entrada.next();
+            }
                         
             System.out.println("Usuarios ingresados con exito");
             

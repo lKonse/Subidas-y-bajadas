@@ -265,7 +265,7 @@ public class Practica1ModoJuegoDificil {
 
         ContP1++;
         
-        if(CasillaP1 >= 40){
+        if(CasillaP1 >= 200){
             System.out.println("");
             System.out.println("El jugador " + par.P1 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
@@ -352,7 +352,7 @@ public class Practica1ModoJuegoDificil {
 
                         for(col = 0; col < 20; col++){
 
-                            if(CasillaP1 == Casilla[col][fil]){
+                            if(CasillaP2 == Casilla[col][fil]){
                                 Jugadores[col][fil] = "|" + par.P2 + "|";
                             }
 
@@ -414,7 +414,7 @@ public class Practica1ModoJuegoDificil {
 
         ContP2++;
         
-        if(CasillaP2 >= 40){
+        if(CasillaP2 >= 200){
             System.out.println("");
             System.out.println("El jugador " + par.P2 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
@@ -563,7 +563,7 @@ public class Practica1ModoJuegoDificil {
 
         ContP3++;
         
-        if(CasillaP3 >= 40){
+        if(CasillaP3 >= 200){
             System.out.println("");
             System.out.println("El jugador " + par.P3 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
@@ -712,7 +712,7 @@ public class Practica1ModoJuegoDificil {
 
         ContP4++;
         
-        if(CasillaP1 >= 40){
+        if(CasillaP1 >= 200){
             System.out.println("");
             System.out.println("El jugador " + par.P4 + " es el ganador!!");
             System.out.println("Presione enter para salir de la partida");
@@ -753,8 +753,7 @@ public class Practica1ModoJuegoDificil {
                         bajada[col] = aleatorio.nextInt(200);
 
                         while(bajada[fil] == 0 || bajada[fil] == (bajada[col]-1)
-                                || bajada[fil] == (bajada[fil]+1) || bajada[col] == subida[b] || bajada[col] == (subida[b]-1)
-                                || bajada[col] == (subida[b]+1)){
+                                || bajada[fil] == (bajada[fil]+1) || bajada[col] == subida[b]){
 
                             bajada[col] = aleatorio.nextInt(200);
                         }   

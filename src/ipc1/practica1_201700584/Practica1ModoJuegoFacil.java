@@ -579,8 +579,7 @@ public class Practica1ModoJuegoFacil {
                         bajada[col] = aleatorio.nextInt(40);
 
                         while(bajada[fil] == 0 || bajada[fil] == (bajada[col]-1)
-                                || bajada[fil] == (bajada[fil]+1) || bajada[col] == subida[b] || bajada[col] == (subida[b]-1)
-                                || bajada[col] == (subida[b]+1)){
+                                || bajada[fil] == (bajada[fil]+1) || bajada[col] == subida[b]){
 
                             bajada[col] = aleatorio.nextInt(40);
                         }   

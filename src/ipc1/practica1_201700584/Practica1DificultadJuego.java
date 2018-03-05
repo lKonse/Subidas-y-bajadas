@@ -13,8 +13,9 @@ public class Practica1DificultadJuego {
         Scanner entrada = new Scanner(System.in);
         
         int OpMenuDificultad;
+        Practica1ParametrosIniciales par = new Practica1ParametrosIniciales();
         
-        do{
+
         //Menu de la dificultad de juego
         System.out.println("DIFICULTAD DEL JUEGO:");
         System.out.println("1. Facil");
@@ -36,6 +37,7 @@ public class Practica1DificultadJuego {
                 System.out.println("Subidas de 5 a 10");
                 System.out.println("Bajadas de 5 a 10");
                 Enter();
+                par.MenuParametros();
                 break;
                 
             case 2:
@@ -47,6 +49,7 @@ public class Practica1DificultadJuego {
                 System.out.println("Subidas de 20 a 40");
                 System.out.println("Bajadas de 20 a 40");
                 Enter();
+                par.MenuParametros();
                 break;
                 
             case 3:
@@ -57,7 +60,6 @@ public class Practica1DificultadJuego {
             
         }
         
-        }while(OpMenuDificultad != 3);
     
     }
     
@@ -65,7 +67,7 @@ public class Practica1DificultadJuego {
         //Metodo para que el programa continue si el usuario pulsa enter
         Scanner Enter = new Scanner(System.in);
         System.out.println();
-        System.out.println("Presione enter para continuar");
+        System.out.println("Presione enter para continuar a parametros del juego");
         Enter.nextLine();
     }
     
