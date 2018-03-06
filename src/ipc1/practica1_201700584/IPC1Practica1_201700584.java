@@ -30,6 +30,10 @@ public class IPC1Practica1_201700584 {
                    break;
                 
                case 2:
+                   
+                   while(OpMenuPrincipal == 1){
+                       
+                   }
                    //Llamamos al metodo que definira los parametros dentro del juego
                    Practica1ParametrosIniciales ParaJuego = new Practica1ParametrosIniciales();
                    ParaJuego.MenuParametros();
